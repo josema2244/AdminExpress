@@ -1,0 +1,227 @@
+/* ---------- Variables y reset ---------- */
+:root {
+  --blue: #0a5ce6;
+  --dark: #1b2559;
+  --gray: #8a8f9c;
+  --bg: #f7f7f7;
+  --white: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Raleway', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--dark);
+  min-height: 100vh;
+}
+
+/* ---------- Estructura general con Grid (escritorio) ---------- */
+.login {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+}
+
+/* Panel azul */
+.login__brand {
+  display: grid;
+  place-items: center;
+  background: var(--blue);
+  color: var(--white);
+  padding: 2rem;
+}
+
+.login__brand h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+/* Panel del formulario */
+.login__panel {
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  background: var(--bg);
+}
+
+.form {
+  display: grid;
+  width: 100%;
+  max-width: 420px;
+}
+
+/* ---------- Textos del formulario ---------- */
+.form__title {
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.form__title strong {
+  font-weight: 700;
+}
+
+.form__text {
+  margin: 0.8rem 0 2.5rem;
+  max-width: 260px;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--gray);
+}
+
+.form__label {
+  margin: 0 0 0.4rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+/* ---------- Campos con ícono (Grid) ---------- */
+.field {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.6rem;
+  height: 48px;
+  margin-bottom: 1rem;
+  padding: 0 1rem;
+  background: var(--white);
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  border: 1px solid transparent;
+}
+
+.field:focus-within {
+  border-color: var(--blue);
+}
+
+.field__icon {
+  width: 18px;
+  height: 18px;
+  color: var(--dark);
+}
+
+.field__icon--eye {
+  color: var(--gray);
+}
+
+.field input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 0.8rem;
+  color: var(--dark);
+}
+
+.field input::placeholder {
+  color: #b3b6bf;
+}
+
+/* ---------- Enlaces y botón ---------- */
+.form__forgot {
+  justify-self: end;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--blue);
+  text-decoration: none;
+}
+
+.form__forgot:hover {
+  text-decoration: underline;
+}
+
+.btn {
+  justify-self: start;
+  width: 180px;
+  height: 46px;
+  margin-top: 2.5rem;
+  border: none;
+  border-radius: 12px;
+  background: var(--blue);
+  color: var(--white);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn:hover {
+  background: #084bbd;
+}
+
+/* El texto "Sign Up" solo se ve en móvil */
+.form__signup {
+  display: none;
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.7rem;
+  color: var(--gray);
+}
+
+.form__signup a {
+  font-weight: 700;
+  color: var(--blue);
+  text-decoration: none;
+}
+
+/* ---------- Media query: tabletas (hasta 900px) ---------- */
+/* El panel azul pasa arriba como una franja y todo queda en una columna */
+@media (max-width: 900px) {
+  .login {
+    grid-template-columns: 1fr;
+    grid-template-rows: 140px 1fr;
+  }
+
+  .login__brand h1 {
+    font-size: 1.8rem;
+  }
+
+  .login__panel {
+    align-items: start;
+    padding-top: 3rem;
+  }
+
+  .form {
+    max-width: 480px;
+  }
+}
+
+/* ---------- Media query: móviles (hasta 600px) ---------- */
+/* Se oculta el panel azul, el botón ocupa todo el ancho y aparece "Sign Up" */
+@media (max-width: 600px) {
+  .login {
+    grid-template-rows: 1fr;
+  }
+
+  .login__brand {
+    display: none;
+  }
+
+  .login__panel {
+    padding: 3rem 1.5rem 2rem;
+  }
+
+  .form__label {
+    display: none;
+  }
+
+  .form__text {
+    margin-bottom: 2rem;
+  }
+
+  .btn {
+    justify-self: stretch;
+    width: 100%;
+    margin-top: 1.5rem;
+  }
+
+  .form__signup {
+    display: block;
+  }
+}
